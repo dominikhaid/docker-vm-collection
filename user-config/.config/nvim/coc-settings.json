@@ -1,0 +1,13 @@
+{
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "js",
+    "jsx",
+    "ts",
+    "tsx",
+    "markdown",
+    "json"
+  ],
+  "tsserver.enable": true
+}
