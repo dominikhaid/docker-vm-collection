@@ -1,14 +1,20 @@
 version: "3"
 
 services:
-  app:
+  debian-vm:
     build:
       context: .
       dockerfile: Dockerfile
       args:
        - USERNAME=dominik
        - PASSWORD=dom53361.
-       - debian:bullseye
+       - IMAGE=debian:bullseye
+       - PHP=true
+       - PHP_VERSION=8
+       - NODE=true
+       - NODE_VERSION=15
+       - RUST=true
+       - DESKTOP=true
        - DEBIAN_FRONTEND=noninteractive
     environment:
       - container docker
@@ -17,14 +23,39 @@ services:
       - LC_ALL=en_US.UTF-8
     ports: 
         - 5901:5900
+        - 80:80
+    #cgroupns: host
+    cgroup_parent: host
+    container_name: debian-vm
     tty: true
+    #set privilaged to true if you want to use snap or faltpak  
+    privileged: false
     volumes:
-      - ./setup.sh:/root/setup.sh
-      - debian_sys:/sys/fs/cgroup:ro
-    #restart: unless-stopped
+      - home:/home
+      - cgroup:/sys/fs/cgroup
+      - fuse:/sys/fs/fuse  
+      - opt:/opt
+      - sbin:/sbin
+      - lib:/lib
+      - snap:/snap
+      - root:/root
+      - usr:/usr
+    tmpfs:
+      - /tmp
+      - /run
+      - /run/lock
+      - /var/chache
+    restart: unless-stopped
 
   
 volumes:
-  debian_sys:
-
+  cgroup:
+  home:
+  fuse:
+  opt:
+  sbin:
+  lib: 
+  snap:
+  root:
+  usr:
 #docker run -it -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/fs/fuse:/sys/fs/fuse  --tmpfs /tmp --tmpfs /run  --tmpfs /run/lock -p 5901:5900 -p 80:80 --cgroupns=host debian-vm

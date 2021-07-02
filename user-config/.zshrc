@@ -3,8 +3,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/dominik/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export TMPDIR="/tmp"
+export PATH="$HOME/neovim/bin:$PATH"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -89,6 +90,7 @@ export PATH=$PATH:$HOME/.local/bin
 #export PATH=$PATH:$HOME/.SpaceVim/bin
 export ZSH=$HOME/.oh-my-zsh
 #source ~/.nvm/nvm.sh
+export PATH="$HOME/neovim/bin:$PATH"
 source  $HOME/.cargo/env
 source ~/.profile
 ### SET VI MODE ###
