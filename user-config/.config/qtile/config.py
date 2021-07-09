@@ -14,65 +14,65 @@ mod = "mod4"  # Sets mod key to SUPER/WINDOWS
 myTerm = "kitty"
 
 keys = [
-    # Layout hotkeys
-    Key([mod], "h", lazy.layout.shrink_main()),
-    Key([mod], "l", lazy.layout.grow_main()),
-    Key([mod], "j", lazy.layout.down()),
-    Key([mod], "k", lazy.layout.up()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
-    Key([mod], "n", lazy.layout.normalize()),
-    Key([mod], "o", lazy.layout.maximize()),
-    # Key([mod], 'r', lazy.spawncmd()),
-    Key(
-        [mod, "shift"],
-        "space",
-        lazy.layout.rotate(),
-        lazy.layout.flip(),
-        desc="Switch which side main pane occupies (XmonadTall)",
-    ),
-    ### Switch focus to specific monitor (out of three)
-    # Key([mod], "w",
-    #    lazy.to_screen(0),
-    #    desc='Keyboard focus to monitor 1'
-    #    ),
-    # Key([mod], "e",
-    #   lazy.to_screen(1),
-    #    desc='Keyboard focus to monitor 2'
-    #    ),
-    #Key([mod], "r",
-    #   lazy.to_screen(2),
-    #   desc='Keyboard focus to monitor 3'
-    #   ),
-    ### Switch focus of monitors
-    Key([mod], "period",
-        lazy.next_screen(),
-        desc='Move focus to next monitor'
-        ),
-    Key([mod], "comma",
-        lazy.prev_screen(),
-        desc='Move focus to prev monitor'
-        ),
-    # Window hotkeys
-    Key([mod], "space", lazy.window.toggle_fullscreen()),
-    Key([mod], "c", lazy.window.kill()),
-    # Spec hotkeys
-    Key([mod, "control"], "r", lazy.restart()),
-    Key([mod, "control"], "q", lazy.shutdown()),
-    # Apps hotkeys
-    Key([mod], "Return", lazy.spawn(myTerm), desc="Launch terminal"),
-    Key([mod], "f", lazy.spawn("firefox")),
-    Key([mod, "shift"], "f", lazy.spawn("firefox-dev -P default")),
-    Key([mod], "v", lazy.spawn("code . -n")),
-    Key([mod], "e", lazy.spawn("pcmanfm")),
+        # Layout hotkeys
+        Key([mod], "h", lazy.layout.shrink_main()),
+        Key([mod], "l", lazy.layout.grow_main()),
+        Key([mod], "j", lazy.layout.down()),
+        Key([mod], "k", lazy.layout.up()),
+        Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
+        Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
+        Key([mod], "n", lazy.layout.normalize()),
+        Key([mod], "o", lazy.layout.maximize()),
+        # Key([mod], 'r', lazy.spawncmd()),
+        Key(
+            [mod, "shift"],
+            "space",
+            lazy.layout.rotate(),
+            lazy.layout.flip(),
+            desc="Switch which side main pane occupies (XmonadTall)",
+            ),
+        ### Switch focus to specific monitor (out of three)
+        # Key([mod], "w",
+        #    lazy.to_screen(0),
+        #    desc='Keyboard focus to monitor 1'
+        #    ),
+        # Key([mod], "e",
+        #   lazy.to_screen(1),
+        #    desc='Keyboard focus to monitor 2'
+        #    ),
+        #Key([mod], "r",
+        #   lazy.to_screen(2),
+        #   desc='Keyboard focus to monitor 3'
+        #   ),
+        ### Switch focus of monitors
+        Key([mod], "period",
+            lazy.next_screen(),
+            desc='Move focus to next monitor'
+            ),
+        Key([mod], "comma",
+            lazy.prev_screen(),
+            desc='Move focus to prev monitor'
+            ),
+        # Window hotkeys
+        Key([mod], "space", lazy.window.toggle_fullscreen()),
+        Key([mod], "c", lazy.window.kill()),
+        # Spec hotkeys
+        Key([mod, "control"], "r", lazy.restart()),
+        Key([mod, "control"], "q", lazy.shutdown()),
+        # Apps hotkeys
+        Key([mod], "Return", lazy.spawn(myTerm), desc="Launch terminal"),
+        Key([mod], "f", lazy.spawn("firefox")),
+        Key([mod, "shift"], "f", lazy.spawn("firefox-dev -P default")),
+        Key([mod], "v", lazy.spawn("code . -n")),
+Key([mod], "e", lazy.spawn("pcmanfm")),
     Key([mod], "m", lazy.spawn("flatpak run com.spotify.Client")),
     Key([mod], "p", lazy.spawn("flatpak run com.bitwarden.desktop ")),
     # ROFI DMENU
     Key([mod], "s", lazy.spawn(".config/rofi/web-search.sh")),
     Key([mod], "d", lazy.spawn(".config/rofi/github-repos.sh")),
     Key(
-        [mod], "a", lazy.spawn("rofi  -show calc -modi calc:.config/rofi/rofi-calc.sh")
-    ),
+            [mod], "a", lazy.spawn("rofi  -show calc -modi calc:.config/rofi/rofi-calc.sh")
+            ),
     Key([mod], "w", lazy.spawn("rofi -show window")),
     Key([mod], "a", lazy.spawn("rofi -show ssh")),
     Key([mod], "r", lazy.spawn("rofi -show drun")),
@@ -85,20 +85,21 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pulseaudio-ctl up 5")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("pulseaudio-ctl down 5")),
     Key([], "XF86AudioMute", lazy.spawn("pulseaudio-ctl set 1")),
+    Key([mod, "control"], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
 ]
 
 
 # GROUPS
 #
 group_names = [
-    ("DEV", {"layout": "monadtall"}),
-    ("TERM", {"layout": "tile"}),
-    ("WWW", {"layout": "monadtall"}),
-    ("DB", {"layout": "tile"}),
-    ("STUFF", {"layout": "floating"}),
-    ("FILE", {"layout": "treetab"}),
-    ("MUSK", {"layout": "tile"}),
-]
+        ("DEV", {"layout": "monadtall"}),
+        ("TERM", {"layout": "tile"}),
+        ("WWW", {"layout": "monadtall"}),
+        ("DB", {"layout": "tile"}),
+        ("STUFF", {"layout": "floating"}),
+        ("FILE", {"layout": "treetab"}),
+        ("MUSK", {"layout": "tile"}),
+        ]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
@@ -129,41 +130,41 @@ lila="#9876aa"
 white="#FFFFFF"
 
 layout_theme = {
-    "border_width": 2,
-    "margin": 5,
-    "border_focus": green,
-    "border_normal": gray,
-}
+        "border_width": 2,
+        "margin": 5,
+        "border_focus": green,
+        "border_normal": gray,
+        }
 
 layouts = [
-    # layout.MonadWide(**layout_theme),
-    # layout.Bsp(**layout_theme),
-    # layout.Stack(stacks=2, **layout_theme),
-    # layout.Columns(**layout_theme),
-    # layout.RatioTile(**layout_theme),
-    # layout.VerticalTile(**layout_theme),
-    # layout.Matrix(**layout_theme),
-    # layout.Zoomy(**layout_theme),
-    layout.MonadTall(shift_windows=True, **layout_theme),
-    layout.Max(**layout_theme),
-    layout.Tile(shift_windows=True, **layout_theme),
-    layout.Stack(num_stacks=2),
-    layout.TreeTab(
-        font="Fira Code",
-        fontsize=10,
-        sections=["FIRST", "SECOND"],
-        section_fontsize=11,
-        bg_color=gray,
-        active_bg=lila,
-        active_fg=white,
-        inactive_bg=gray,
-        inactive_fg=blue,
-        padding_y=5,
-        section_top=10,
-        panel_width=250,
-    ),
-    layout.Floating(**layout_theme),
-]
+        # layout.MonadWide(**layout_theme),
+        # layout.Bsp(**layout_theme),
+        # layout.Stack(stacks=2, **layout_theme),
+        # layout.Columns(**layout_theme),
+        # layout.RatioTile(**layout_theme),
+        layout.VerticalTile(**layout_theme),
+        # layout.Matrix(**layout_theme),
+        # layout.Zoomy(**layout_theme),
+        layout.MonadTall(shift_windows=True, **layout_theme),
+        layout.Max(**layout_theme),
+        layout.Tile(shift_windows=True, **layout_theme),
+        layout.Stack(num_stacks=2),
+        layout.TreeTab(
+            font="Fira Code",
+            fontsize=10,
+            sections=["FIRST", "SECOND"],
+            section_fontsize=11,
+            bg_color=gray,
+            active_bg=lila,
+            active_fg=white,
+            inactive_bg=gray,
+            inactive_fg=blue,
+            padding_y=5,
+            section_top=10,
+            panel_width=250,
+            ),
+        layout.Floating(**layout_theme),
+        ]
 
 
 ##### DEFAULT WIDGET SETTINGS #####
@@ -172,141 +173,138 @@ widget_defaults = dict(font="Fira Code", fontsize=12, padding=2, background=pane
 
 def init_widgets_list():
     widgets_list = [
+            widget.Sep(
+                linewidth=0, padding=6, foreground=white_color, background=panel_color
+                ),
+            widget.GroupBox(
+                font="Fira Code Bold",
+                fontsize=10,
+                margin_y=3,
+                margin_x=0,
+                padding_y=10,
+                padding_x=5,
+                borderwidth=3,
+                active=orange,
+                inactive=gray_light,
+                rounded=False,
+                highlight_color=orange,
+                urgent_text=green,
+                urgent_alert_method="border",
+                disable_drag=True,
+                highlight_method="block",
+                this_current_screen_border=green,
+                this_screen_border=gray,
+                other_current_screen_border=blue,
+                other_screen_border=gray,
+                foreground=white,
+                background=gray,
+                ),
+            widget.Prompt(
+                prompt="run: ",
+                ignore_dups_history=True,
+                font="Fira Code",
+                padding=10,
+                foreground=orange,
+                background=green,
+                ),
+            widget.Notify(),
+            widget.Sep(
+                linewidth=0, 
+                padding=40, 
+                foreground=white, 
+                background=gray
+                ),
+            widget.WindowName(
+                foreground=green, 
+                background=gray, 
+                padding=0),
+            widget.Sep(
+                linewidth=0,
+                padding=20,
+                foreground=lila,
+                background=lila,
+                ),
         widget.Sep(
-            linewidth=0, padding=6, foreground=white_color, background=panel_color
-        ),
-        widget.GroupBox(
-            font="Fira Code Bold",
-            fontsize=10,
-            margin_y=3,
-            margin_x=0,
-            padding_y=10,
-            padding_x=5,
-            borderwidth=3,
-            active=orange,
-            inactive=gray_light,
-            rounded=False,
-            highlight_color=orange,
-            urgent_text=green,
-            urgent_alert_method="border",
-            disable_drag=True,
-            highlight_method="block",
-            this_current_screen_border=green,
-            this_screen_border=gray,
-            other_current_screen_border=blue,
-            other_screen_border=gray,
-            foreground=white,
-            background=gray,
-        ),
-        widget.Prompt(
-            prompt="run: ",
-            ignore_dups_history=True,
-            font="Fira Code",
-            padding=10,
-            foreground=orange,
-            background=green,
-        ),
-        widget.Notify(),
-        widget.Sep(
-            linewidth=0, 
-            padding=40, 
-            foreground=white, 
-            background=gray
-        ),
-        widget.WindowName(
-            foreground=green, 
-            background=gray, 
-            padding=0),
-        widget.Sep(
-            linewidth=0,
-            padding=20,
-            foreground=lila,
-            background=lila,
-        ),
-        widget.Battery(
-            charge_char="^",
-            discharge_char="V",
-            empty_char="x",
-            low_foreground="#FF0000",
-            notify_below=20,
-            foreground=white,
-            background=lila
-            ),
-        widget.Sep(
-            linewidth=0, 
-            padding=20, 
-            foreground=white, 
-            background=lila
-        ),
+                linewidth=0, 
+                padding=20, 
+                foreground=white, 
+                background=lila
+                ),
         widget.Clock(
-            foreground=white,
-            background=lila,
-            format="%A, %B %d  [ %H:%M ]",
-        ),
+                foreground=white,
+                background=lila,
+                format="%A, %B %d  [ %H:%M ]",
+                ),
         widget.Memory(
                 foreground=white, 
                 background=lila
                 ),
         widget.Net(
-            interface="eth0",
-            format="{down} ↓↑ {up}",
-            foreground=white,
-            background=lila,
-            padding=5,
-        ),
+                interface="enp27s0",
+                format="{down} ↓↑ {up}",
+                foreground=white,
+                background=lila,
+                padding=5,
+                ),
         widget.TextBox(
-            text=" Vol:", 
-            foreground=white, 
-            background=lila, 
-            padding=0
-        ),
+                text=" Vol:", 
+                foreground=white, 
+                background=lila, 
+                padding=0
+                ),
         widget.Volume(
                 foreground=white, 
                 background=lila, 
                 padding=5
                 ),
         widget.Sep(
-            linewidth=0,
-            padding=20,
-            foreground=lila,
-            background=lila,
-        ),
+                linewidth=0,
+                padding=20,
+                foreground=lila,
+                background=lila,
+                ),
         widget.Sep(
-            linewidth=0, 
-            padding=20, 
-            foreground=green, 
-            background=green
-        ),
+                linewidth=0, 
+                padding=20, 
+                foreground=green, 
+                background=green
+                ),
         widget.CurrentLayoutIcon(
-            custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
-            foreground=white,
-            background=green,
-            padding=0,
-            scale=0.7,
-        ),
+                custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
+                foreground=white,
+                background=green,
+                padding=0,
+                scale=0.7,
+                ),
         widget.Sep(
-            linewidth=0, 
-            padding=20, 
-            foreground=green, 
-            background=green
-            ),
+                linewidth=0, 
+                padding=20, 
+                foreground=green, 
+                background=green
+                ),
         widget.Sep(
-            linewidth=0, 
-            padding=20, 
-            foreground=blue, 
-            background=blue
-            ),
+                linewidth=0, 
+                padding=20, 
+                foreground=blue, 
+                background=blue
+                ),
+        widget.KeyboardLayout(
+                padding=20,
+                foreground=white,
+                background=blue,
+                configured_keyboards=['us','de']
+                ),
         widget.Systray(
-            foreground=white, 
-            background=blue, 
-            padding=5
-        ),
+                foreground=white, 
+                background=blue, 
+                padding=5
+                ),
         widget.Sep(
-            linewidth=0,
-            padding=30,
-            foreground=blue,
-            background=blue,
-        ),
+                linewidth=0,
+                padding=30,
+                foreground=blue,
+                background=blue,
+                ),
     ]
     return widgets_list
 
@@ -326,10 +324,10 @@ def init_widgets_screen3():
 
 def init_screens():
     return [
-        Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20)),
-        Screen(top=bar.Bar(widgets=init_widgets_screen3(), opacity=1.0, size=20)),
-    ]
+            Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20)),
+            Screen(top=bar.Bar(widgets=init_widgets_screen3(), opacity=1.0, size=20)),
+            ]
 
 
 if __name__ in ["config", "__main__"]:
@@ -342,17 +340,17 @@ if __name__ in ["config", "__main__"]:
 
 # Drag floating layouts.
 mouse = [
-    Drag(
-        [mod],
-        "Button1",
-        lazy.window.set_position_floating(),
-        start=lazy.window.get_position(),
-    ),
-    Drag(
-        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
-    ),
-    Click([mod], "Button2", lazy.window.bring_to_front()),
-]
+        Drag(
+            [mod],
+            "Button1",
+            lazy.window.set_position_floating(),
+            start=lazy.window.get_position(),
+            ),
+        Drag(
+            [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+            ),
+        Click([mod], "Button2", lazy.window.bring_to_front()),
+        ]
 
 auto_fullscreen = True
 focus_on_window_activation = "smart"
@@ -377,7 +375,7 @@ floating_layout = layout.Floating(float_rules=[
     Match(title='Qalculate!'),  # qalculate-gtk
     Match(wm_class='kdenlive'),  # kdenlive
     Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
-])
+    ])
 
 
 @lazy.function
@@ -391,6 +389,5 @@ def float_to_front(qtile):
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser("~/.config/qtile/autostart.sh")
-  #  screen = os.path.expanduser("~/.screenlayout/screen-layout.sh")
     subprocess.call([home])
- #   subprocess.call([screen])
+
