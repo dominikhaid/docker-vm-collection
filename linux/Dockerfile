@@ -178,6 +178,9 @@ RUN echo $PASSWORD | sudo -S su $USERNAME -c "cd /home/$USERNAME \
       && curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash"
 
 RUN git clone https://github.com/jeffreytse/zsh-vi-mode /home/$USERNAME/.oh-my-zsh/custom/plugins/zsh-vi-mode
+RUN  echo "source /home/$USERNAME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>${ZDOTDIR:-/home/$USERNAME}/.zshrc 
+
+RUN echo $PASSWORD | sudo -S su $USERNAME -c"git clone https://github.com/zsh-users/zsh-syntax-highlighting.git"
 
 ##
 # NVIM
@@ -194,7 +197,10 @@ RUN mkdir /home/$USERNAME/.vnc \
     &&  cp -R /home/$USERNAME/debian-config/user-config/"LanguageTool-5.2" /home/$USERNAME/"LanguageTool-5.2" \
     &&  cp /home/$USERNAME/debian-config/vnc/xstartup /home/$USERNAME/.vnc/xstartup \
     &&  mv -f /home/$USERNAME/debian-config/user-config/.vim/* /home/$USERNAME/.vim \
-    &&  mv -f /home/$USERNAME/debian-config/user-config/.vimrc /home/$USERNAME/.vimrc
+    &&  mv -f /home/$USERNAME/debian-config/user-config/.vimrc /home/$USERNAME/.vimrc \
+    &&  mv -f /home/$USERNAME/debian-config/user-config/.bashrc /home/$USERNAME/.bashrc \
+    &&  mv -f /home/$USERNAME/debian-config/user-config/.zshrc /home/$USERNAME/.zshrc
+
 
 RUN chown $USERNAME:$USERNAME -R /home/$USERNAME/
 
