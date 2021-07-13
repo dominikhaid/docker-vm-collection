@@ -1,4 +1,0 @@
-#!/bin/sh
-#/etc/X11/xinit/xserverrc
-#exec /usr/bin/X -nolisten tcp "$@"
-exec Xvfb :0 -screen 0 1920x1080x24

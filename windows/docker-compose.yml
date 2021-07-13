@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  window-vm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+       - IMAGE=debian:bullseye
+       - DEBIAN_FRONTEND=noninteractive
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=${DISPLAY:-:0.0}
+      - EXTRA=-display none -vnc 0.0.0.0:99,password=on
+    devices:
+      - /dev/kvm
