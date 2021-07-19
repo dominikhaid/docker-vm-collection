@@ -185,7 +185,10 @@ RUN echo $PASSWORD | sudo -S su $USERNAME -c "cd /home/$USERNAME && git clone ht
 ##
 # NVIM
 ##
-USER root 
+USER root
+
+RUN git clone https://github.com/dominikhaid/debian-config.git /home/$USERNAME/debian-config
+
 RUN mkdir /home/$USERNAME/.vnc \
     && mkdir /home/$USERNAME/.config \
     && mkdir /home/$USERNAME/.vim \
