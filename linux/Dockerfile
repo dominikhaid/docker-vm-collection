@@ -110,9 +110,11 @@ RUN git clone https://github.com/dominikhaid/debian-config /home/$USERNAME/debia
 ##
 # Copy Files
 ##
+ARG VNC_PASS="123"
 
 RUN  cp /home/$USERNAME/debian-config/vnc/x11vnc.service /etc/systemd/system/x11vnc.service \
       && cp /home/$USERNAME/debian-config/vnc/xserverrc /etc/X11/xinit/xserverrc \
+      && sed -i "s/-auth guess/-passwd $VNC_PASS/g" /etc/systemd/system/x11vnc.service \
       && mkdir /root/.vnc \
       && cp /home/$USERNAME/debian-config/vnc/xstartup /root/.vnc/xstartup \
       && cp /home/$USERNAME/debian-config/lightdm/lightdm.conf /etc/lightdm/lightdm.conf \
@@ -187,7 +189,6 @@ RUN echo $PASSWORD | sudo -S su $USERNAME -c "cd /home/$USERNAME && git clone ht
 ##
 USER root
 
-RUN git clone https://github.com/dominikhaid/debian-config.git /home/$USERNAME/debian-config
 
 RUN mkdir /home/$USERNAME/.vnc \
     && mkdir /home/$USERNAME/.config \
