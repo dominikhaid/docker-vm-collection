@@ -13,30 +13,15 @@ RUN apt-get update -y && apt-get upgrade -y \
       net-tools \
       jq \
       autoclean \
+      rdesktop \
       autoremove
 
-RUN apt-get -y  install rdesktop
 
-      qemu-system-x86_64 \
-      -append 'root=/dev/vda console=ttyS0' \
-      -drive file='rootfs.ext2.qcow2,if=virtio,format=qcow2'  \
-      -enable-kvm \
-      -kernel 'bzImage' \
-      -nographic
+RUN qemu-img create -f qcow2 win10.img 50G
 
-
-RUN qemu-img create -f qcow2 hdd.img 40G
-
-RUN sudo qemu-system-x86_64 -enable-kvm \
-        -machine q35 -smp sockets=1,cores=1,threads=2 -m 2048 \
-        -usb -device usb-kbd -device usb-tablet -rtc base=localtime \
-        -net nic,model=virtio -net user,hostfwd=tcp::4444-:4444 \
-        -drive file=hdd.img,media=disk,if=virtio \
-        -drive file=Win10_1809Oct_English_x32.iso,media=cdrom \
-        -drive file=virtio-win-0.1.141.iso,media=cdrom 
 
 COPY startup.sh
-ENTRYPOINT ["/startup.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 #exec qemu-system-x86_64 -m 3000 \
 # -cpu Penryn,vendor=GenuineIntel,+invtsc,vmware-cpuid-freq=on,+pcid,+ssse3,+sse4.2,+popcnt,+avx,+aes,+xsave,+xsaveopt,check,\
@@ -59,12 +44,6 @@ ENTRYPOINT ["/startup.sh"]
 
 # sudo docker run --privileged -it --name ubuntukvm --device=/dev/kvm --device=/dev/net/tun -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cap-add=NET_ADMIN --cap-add=SYS_ADMIN ubuntu:18.04 /bin/bash
 
-# sudo qemu-system-x86_64 -enable-kvm \
-#        -machine q35 -smp sockets=1,cores=1,threads=2 -m 2048 \
-#        -usb -device usb-kbd -device usb-tablet -rtc base=localtime \
-#        -net nic,model=virtio -net user,hostfwd=tcp::4444-:4444 \
-#        -drive file=snapshot.img,media=disk,if=virtio \
-#        -loadvm windows
 
 #qemu-system-x86_64  \
 #-m 1024  \

@@ -10,6 +10,8 @@ services:
        - DEBIAN_FRONTEND=noninteractive
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - /iso/bios.iso:/root/boot.iso
+      - /iso/win.iso:/root/win.iso
     environment:
       - DISPLAY=${DISPLAY:-:0.0}
       - EXTRA=-display none -vnc 0.0.0.0:99,password=on

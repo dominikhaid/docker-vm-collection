@@ -180,7 +180,7 @@ RUN echo $PASSWORD | sudo -S su $USERNAME -c "cd /home/$USERNAME \
 RUN git clone https://github.com/jeffreytse/zsh-vi-mode /home/$USERNAME/.oh-my-zsh/custom/plugins/zsh-vi-mode
 RUN  echo "source /home/$USERNAME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >>${ZDOTDIR:-/home/$USERNAME}/.zshrc 
 
-RUN echo $PASSWORD | sudo -S su $USERNAME -c"git clone https://github.com/zsh-users/zsh-syntax-highlighting.git"
+RUN echo $PASSWORD | sudo -S su $USERNAME -c "cd /home/$USERNAME && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git"
 
 ##
 # NVIM
