@@ -26,7 +26,7 @@ After building an starting the container u can connect to it via any VNC Viewer.
 
 ## Use
 
-> docke>  run -it -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/fs/fuse:/sys/fs/fuse  --tmpfs /tmp --tmpfs /run  --tmpfs /run/lock -p 5901:5900 -p 80:80 --cgroupns=host debian-vm
+> docker  run -it -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/fs/fuse:/sys/fs/fuse  --tmpfs /tmp --tmpfs /run  --tmpfs /run/lock -p 5901:5900 -p 80:80 --cgroupns=host debian-vm
  
 
 
